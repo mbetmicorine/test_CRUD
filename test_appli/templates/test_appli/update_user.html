@@ -1,0 +1,32 @@
+{% extends "test_appli/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+     <div class="form-box">
+        <div class="logo">
+            <h2>Modification de {{ user.username }}</h2>
+        </div>
+   
+
+    <form method="post">
+        {% csrf_token %}
+        
+        <label>Numéro de téléphone :</label><br>
+        {{ form.phone_number }}<br><br>
+
+        <label>Nom d'utilisateur :</label><br>
+        {{ form.username }}<br><br>
+
+        <label>Email :</label><br>
+        {{ form.email }}<br><br>
+
+        <label>Nouveau mot de passe :</label><br>
+        {{ form.password }}<br><br>
+
+        <button type="reset" >Annuler</button>
+        <button type="submit" >Modifier</button>
+    </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "test_appli/base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container mt-5">
+
+    <h2 class="mb-4">Bienvenue {{ request.user.username }} 👋</h2>
+
+    <div >
+
+        <h4 class="mb-4">Utilisateurs enregistrés</h4>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Téléphone</th>
+                    <th>Nom utilisateur</th>
+                    <th>Email</th>
+                    <th>Mot de passe (haché)</th>
+                    <th colspan="2">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.phone_number }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td class="text-danger small">{{ user.password }}</td>
+                    <td>
+                        <a href="{% url 'update_user' user.phone_number %}">
+                            Modifier
+                        </a>
+                    </td>
+      
+
+
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center text-muted py-3">
+                        Aucun utilisateur trouvé.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}
