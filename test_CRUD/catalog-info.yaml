@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: mon-projet
+  description: Mon projet GitHub
+spec:
+  type: component
+  lifecycle: production
+  owner: user:default/mbetmicorine
